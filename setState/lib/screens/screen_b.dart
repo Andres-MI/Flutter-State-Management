@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ScreenB extends StatelessWidget {
-  const ScreenB({Key? key}) : super(key: key);
+class ScreenB extends StatefulWidget {
+  int counter;
+  ScreenB({Key? key, required this.counter}) : super(key: key);
 
+  @override
+  State<ScreenB> createState() => _ScreenBState();
+}
+
+class _ScreenBState extends State<ScreenB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +25,16 @@ class ScreenB extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '0',
+              '${widget.counter}',
               style: Theme.of(context).textTheme.headline4,
             ),
             const SizedBox(height: 16.0,),
             ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  setState((){
+                    widget.counter++;
+                  });
+                },
                 child: const Text('+')),
           ],
         ),

@@ -28,12 +28,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _navigateToScreenA() {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const ScreenA()));
+        .push(MaterialPageRoute(builder: (context) => ScreenA(counter: _counter,)));
   }
 
   void _navigateToScreenB() {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const ScreenB()));
+        .push(MaterialPageRoute(builder: (context) => ScreenB(counter: _counter,)));
   }
 
   @override
