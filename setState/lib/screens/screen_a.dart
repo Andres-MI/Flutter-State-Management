@@ -16,7 +16,7 @@ class _ScreenAState extends State<ScreenA> {
         title: const Text('Screen A'),
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(widget.counter);
             },
             icon: const Icon(Icons.arrow_back)),
       ),

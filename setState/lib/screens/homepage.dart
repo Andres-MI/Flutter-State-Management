@@ -26,14 +26,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _navigateToScreenA() {
-    Navigator.of(context)
+  void _navigateToScreenA() async {
+    var result = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => ScreenA(counter: _counter,)));
+    if(result != null) {
+      setState((){
+        _counter = result;
+      });
+    }
   }
 
-  void _navigateToScreenB() {
-    Navigator.of(context)
+  void _navigateToScreenB() async {
+    var result = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => ScreenB(counter: _counter,)));
+
+    if(result != null) {
+      setState((){
+        _counter = result;
+      });
+    }
   }
 
   @override
