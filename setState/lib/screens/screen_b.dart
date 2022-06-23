@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ScreenB extends StatefulWidget {
   int counter;
-  ScreenB({Key? key, required this.counter}) : super(key: key);
+  final Function(int) callback;
+  ScreenB({Key? key, required this.counter, required this.callback}) : super(key: key);
 
   @override
   State<ScreenB> createState() => _ScreenBState();
@@ -16,7 +17,7 @@ class _ScreenBState extends State<ScreenB> {
         title: const Text('Screen B'),
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop(widget.counter);
+              Navigator.of(context).pop();
             },
             icon: const Icon(Icons.arrow_back)),
       ),
@@ -34,6 +35,7 @@ class _ScreenBState extends State<ScreenB> {
                   setState((){
                     widget.counter++;
                   });
+                  widget.callback(widget.counter);
                 },
                 child: const Text('+')),
           ],

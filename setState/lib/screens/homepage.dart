@@ -26,25 +26,28 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _navigateToScreenA() async {
-    var result = await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => ScreenA(counter: _counter,)));
-    if(result != null) {
-      setState((){
-        _counter = result;
-      });
-    }
+  void _navigateToScreenA() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ScreenA(
+              counter: _counter,
+              callback: (value) {
+                setState(() {
+                  _counter = value;
+                });
+              },
+            )));
   }
 
-  void _navigateToScreenB() async {
-    var result = await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => ScreenB(counter: _counter,)));
-
-    if(result != null) {
-      setState((){
-        _counter = result;
-      });
-    }
+  void _navigateToScreenB() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ScreenB(
+              counter: _counter,
+              callback: (value) {
+                setState(() {
+                  _counter = value;
+                });
+              },
+            )));
   }
 
   @override
@@ -77,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 32.0,
                 ),
                 ElevatedButton(
-                    onPressed: _navigateToScreenB, child: const Text('Screen B'))
+                    onPressed: _navigateToScreenB,
+                    child: const Text('Screen B'))
               ],
             ),
             const SizedBox(
