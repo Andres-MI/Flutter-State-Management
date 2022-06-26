@@ -14,4 +14,11 @@ class MyInheritedWidget extends InheritedWidget {
     //Widget will be rebuilt when our data (in this case, counter) has changed
     return oldWidget.counter != counter;
   }
+
+  static MyInheritedWidget of(BuildContext context) {
+    final MyInheritedWidget? widget =
+        context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
+    assert(widget != null);
+    return widget!;
+  }
 }
