@@ -19,11 +19,12 @@ class MyCounterWidget extends StatefulWidget {
   final Widget child;
   const MyCounterWidget({Key? key, required this.child}) : super(key: key);
 
-  static MyInheritedWidget of(BuildContext context) {
-    final MyInheritedWidget? widget =
-        context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
-    assert(widget != null);
-    return widget!;
+  //Of method is created
+  static MyCounterWidgetState of(BuildContext context) {
+    final MyCounterWidgetState? widgetState =
+        context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>()?.data;
+    assert(widgetState != null);
+    return widgetState!;
   }
 
   @override
@@ -38,6 +39,12 @@ class MyCounterWidgetState extends State<MyCounterWidget> {
   void incrementCounter() {
     setState(() {
       _counter++;
+    });
+  }
+
+  void resetCounter() {
+    setState(() {
+      _counter = 0;
     });
   }
 
