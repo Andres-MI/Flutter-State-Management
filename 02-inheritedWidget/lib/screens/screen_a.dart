@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/my_inherited_widget.dart';
+
 class ScreenA extends StatelessWidget {
   const ScreenA({Key? key}) : super(key: key);
 
@@ -19,12 +21,16 @@ class ScreenA extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '0',
+              '${MyCounterWidget.of(context).counterValue}',
               style: Theme.of(context).textTheme.headline4,
             ),
-            const SizedBox(height: 16.0,),
+            const SizedBox(
+              height: 16.0,
+            ),
             ElevatedButton(
-                onPressed: (){},
+                onPressed: () {
+                  MyCounterWidget.of(context).incrementCounter();
+                },
                 child: const Text('+')),
           ],
         ),
