@@ -14,21 +14,43 @@ class ScreenA extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back)),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '0',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            const SizedBox(height: 16.0,),
-            ElevatedButton(
-                onPressed: (){},
-                child: const Text('+')),
-          ],
-        ),
+      body: const ScreenBody(),
+    );
+  }
+}
+
+class ScreenBody extends StatelessWidget {
+  const ScreenBody({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CustomText(),
+          const SizedBox(height: 16.0,),
+          ElevatedButton(
+              onPressed: (){},
+              child: const Text('+')),
+        ],
       ),
+    );
+  }
+}
+
+class CustomText extends StatelessWidget {
+  const CustomText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '0',
+      style: Theme.of(context).textTheme.headline4,
     );
   }
 }
