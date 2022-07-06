@@ -5,6 +5,7 @@ class ScreenA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Screen A built');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Screen A'),
@@ -26,6 +27,7 @@ class ScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('ScreenBody built');
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -48,6 +50,7 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('CustomText built');
     return Text(
       '0',
       style: Theme.of(context).textTheme.headline4,
