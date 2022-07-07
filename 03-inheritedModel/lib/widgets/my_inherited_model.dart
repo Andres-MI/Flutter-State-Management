@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MyInheritedWidget extends InheritedModel<int> {
+class MyInheritedModel extends InheritedModel<int> {
   final MyCounterWidgetState data;
 
-  const MyInheritedWidget({Key? key, required this.data, required super.child})
+  const MyInheritedModel({Key? key, required this.data, required super.child})
       : super(key: key);
 
   @override
@@ -59,6 +59,6 @@ class MyCounterWidgetState extends State<MyCounterWidget> {
   //and it's child as InheritedWidget's child
   @override
   Widget build(BuildContext context) {
-    return MyInheritedWidget(data: this, child: widget.child);
+    return MyInheritedModel(data: this, child: widget.child);
   }
 }
