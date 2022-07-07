@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:inherited_model/screens/screen_a.dart';
 import 'package:inherited_model/screens/screen_b.dart';
 
+import '../widgets/my_inherited_model.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -11,20 +13,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counterA = 0;
-  int _counterB = 0;
-
-  void _incrementCounterA() {
-    setState(() {
-      _counterA++;
-    });
-  }
-
-  void _incrementCounterB() {
-    setState(() {
-      _counterB++;
-    });
-  }
 
   void _navigateToScreenA() {
     Navigator.of(context)
@@ -50,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the buttons this many times:',
             ),
             Text(
-              '$_counterA  -  $_counterB',
+              '${InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 0)?.data.counterAValue}  -  ${InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 1)?.data.counterBValue}',
               style: Theme.of(context).textTheme.headline4,
             ),
             Row(
@@ -78,7 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: _incrementCounterA,
+            onPressed: () {
+              InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 0)
+                  ?.data
+                  .incrementCounterA();
+            },
             tooltip: 'Increment A',
             heroTag: null,
             child: const Icon(Icons.add),
@@ -87,7 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 32,
           ),
           FloatingActionButton(
-            onPressed: _incrementCounterB,
+            onPressed: () {
+              InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 1)
+                  ?.data
+                  .incrementCounterB();
+            },
             tooltip: 'Increment B',
             heroTag: null,
             child: const Icon(Icons.add),

@@ -39,19 +39,27 @@ class MyCounterWidget extends StatefulWidget {
 }
 
 class MyCounterWidgetState extends State<MyCounterWidget> {
-  int _counter = 0;
+  int _counterA = 0;
+  int _counterB = 0;
 
-  int get counterValue => _counter;
+  int get counterAValue => _counterA;
+  int get counterBValue => _counterB;
 
-  void incrementCounter() {
+  void incrementCounterA() {
     setState(() {
-      _counter++;
+      _counterA++;
+    });
+  }
+  void incrementCounterB() {
+    setState(() {
+      _counterB++;
     });
   }
 
-  void resetCounter() {
+  void resetCounters() {
     setState(() {
-      _counter = 0;
+      _counterA = 0;
+      _counterB = 0;
     });
   }
 

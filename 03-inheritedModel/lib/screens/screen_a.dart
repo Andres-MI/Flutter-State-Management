@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inherited_model/widgets/my_inherited_model.dart';
 
 class ScreenA extends StatelessWidget {
   const ScreenA({Key? key}) : super(key: key);
@@ -32,7 +33,14 @@ class ScreenBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const CustomText(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CustomText1(),
+              Text('    -    '),
+              CustomText2(),
+            ],
+          ),
           const SizedBox(height: 16.0,),
           ElevatedButton(
               onPressed: (){},
@@ -43,16 +51,31 @@ class ScreenBody extends StatelessWidget {
   }
 }
 
-class CustomText extends StatelessWidget {
-  const CustomText({
+class CustomText1 extends StatelessWidget {
+  const CustomText1({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print('CustomText built');
+    print('CustomText1 built');
     return Text(
-      '0',
+      '${InheritedModel.inheritFrom<MyInheritedModel>(context,aspect: 0)?.data.counterAValue}',
+      style: Theme.of(context).textTheme.headline4,
+    );
+  }
+}
+
+class CustomText2 extends StatelessWidget {
+  const CustomText2({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('CustomText2 built');
+    return Text(
+      '${InheritedModel.inheritFrom<MyInheritedModel>(context,aspect: 0)?.data.counterBValue}',
       style: Theme.of(context).textTheme.headline4,
     );
   }
