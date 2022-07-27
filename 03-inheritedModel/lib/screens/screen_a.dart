@@ -41,9 +41,15 @@ class ScreenBody extends StatelessWidget {
               CustomText2(),
             ],
           ),
-          const SizedBox(height: 16.0,),
+          const SizedBox(
+            height: 16.0,
+          ),
           ElevatedButton(
-              onPressed: (){},
+              onPressed: () {
+                InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 0)
+                    ?.data
+                    .incrementCounterA();
+              },
               child: const Text('+')),
         ],
       ),
@@ -60,7 +66,7 @@ class CustomText1 extends StatelessWidget {
   Widget build(BuildContext context) {
     print('CustomText1 built');
     return Text(
-      '${InheritedModel.inheritFrom<MyInheritedModel>(context,aspect: 0)?.data.counterAValue}',
+      '${InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 0)?.data.counterAValue}',
       style: Theme.of(context).textTheme.headline4,
     );
   }
@@ -75,7 +81,8 @@ class CustomText2 extends StatelessWidget {
   Widget build(BuildContext context) {
     print('CustomText2 built');
     return Text(
-      '${InheritedModel.inheritFrom<MyInheritedModel>(context,aspect: 0)?.data.counterBValue}',
+      //Change the aspect to 1 not to build this widget!
+      '${InheritedModel.inheritFrom<MyInheritedModel>(context, aspect: 0)?.data.counterBValue}',
       style: Theme.of(context).textTheme.headline4,
     );
   }
